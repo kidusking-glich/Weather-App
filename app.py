@@ -13,3 +13,14 @@ def index():
         city = request.form["city"]
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
         response = requests.get(url)
+        data = response.json()
+        if data["cod"] == 200:
+            weather = {
+                "city": city,
+                "temp": data["main"]["temp"],
+                "description": data["weather"][0]["description"],
+            }
+
+    return render_template("index.html", weather=weather)
+if __name__ == "__main__":
+    app.run(debug=True)
