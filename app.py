@@ -19,7 +19,17 @@ def index():
                 "city": city,
                 "temp": data["main"]["temp"],
                 "description": data["weather"][0]["description"],
+                "icon": data["weather"][0]["icon"],
+                "humidity": data["main"]["humidity"],
+                "wind": data["wind"]["speed"],
+                "country": data["sys"]["country"],
+                "feels_like": data["main"]["feels_like"]
             }
+        if weather:
+            if "rain" in weather["description"]:
+                bg = "bg-primary"
+            elif "clear" in weather["description"]:
+                bg = "bg-warning" 
 
     return render_template("index.html", weather=weather)
 if __name__ == "__main__":
