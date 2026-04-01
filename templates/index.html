@@ -29,6 +29,12 @@
         <button class="btn btn-primary">Search</button>
     </form>
 
+    {% if error %}
+    <div class="alert alert-danger text-center mx-auto shadow-sm" style="max-width: 400px;">
+        {{ error }}
+    </div>
+    {% endif %}
+
     {% if weather %}
     <!-- Weather Card -->
     <div class="card bg-secondary text-white mx-auto shadow-lg" style="max-width: 400px;">
